@@ -7,14 +7,15 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Objects;
 import java.util.Properties;
+
 import io.restassured.config.Config;
 
 
 public class PropertiesLoader {
 
     private static Properties prop = setPropertiesPath();
-    public static final String HOST = prop.getProperty("host");
-    public static final String AUTHBASIC = prop.getProperty("authBasic");
+    public static final String BASE_URL = prop.getProperty("host");
+    public static final String AUTH_BASIC = prop.getProperty("authBasic");
 
     private static Properties setPropertiesPath() {
         final String path = "common.properties";
