@@ -27,7 +27,9 @@ public class BaseRequests {
 
     public Response post(String path, HashMap<String, String> headers, JSONObject body) {
         String url = formUrl(path);
-
+        
+        headers.put('x-token', this.token)
+        
         return given(setRequestSpec())
                 .headers(headers)
                 .body(body.toString())
@@ -37,7 +39,8 @@ public class BaseRequests {
 
     public Response get(String path, HashMap<String, String> headers, HashMap<String, String> params) {
         String url = formUrl(path);
-
+        headers.put('x-token', this.token);
+        
         return given(setRequestSpec())
                 .headers(headers)
                 .params(params)
