@@ -7,11 +7,11 @@ import static app.Urls.*;
 import java.util.HashMap;
 
 public class ApiClient extends BaseRequests {
-    private String token;
+    private BaseRequests http_session; 
 
     public Response login() {
         HashMap<String, String> headers = new HashMap<>();
-        headers.put("Authorization", AUTH_BASIC);
+        headers.put("Authorization", "Basic " + token);
 
         JSONObject body = new JSONObject();
         body.put("expiry", "86400");
@@ -19,21 +19,22 @@ public class ApiClient extends BaseRequests {
 
         Response response = post(LOGIN_PATH, headers, body);
         token = response.jsonPath().getString("token");
+        
+        http_session = new BaseRequests(token);
+        
         return response;
     }
 
     public Response getFilesFromRootFolder() {
-        HashMap<String, String> headers = new HashMap<>();
-        headers.put("x-token", token);
-
         HashMap<String, String> queryParams = new HashMap<>();
         queryParams.put("breadcrumbs", "1");
         queryParams.put("offset", "0");
         queryParams.put("limit", "1000");
         queryParams.put("_", "1622700773180");
 
-        return get(FILES_FOLDER_PATH, headers, queryParams);
+        return http_session.get(FILES_FOLDER_PATH, headers, queryParams);
     }
+
 
     public Response getFilesFromSpecificFolder(String folderID, String limit, String offset(OPTIONAL)) {
         HashMap<String, String> DEFAULT_PARAMS = new HashMap<>();
@@ -56,26 +57,25 @@ public class ApiClient extends BaseRequests {
         queryParams.put("limit", limit);
         queryParams.put("folder_id", folderID);
 
-        return get(FILES_FOLDER_PATH, headers, queryParams);
+        return http_session.get(FILES_FOLDER_PATH, headers, queryParams);
     }
 
     public Response getFilesCount(String folderID) {
-        HashMap<String, String> headers = new HashMap<>();
-        headers.put("x-token", token);
-
         HashMap<String, String> queryParams = new HashMap<>();
         queryParams.put("folder_id", folderID);
 
-        return get(FILES_COUNT_PATH, headers, queryParams);
+        return http_session.get(FILES_COUNT_PATH, headers, queryParams);
     }
 
     public Response getRuns() {
+
         HashMap<String, String> headers = new HashMap<>();
         headers.put("x-token", token);
 
         HashMap<String, String> queryParams = new HashMap<>();
 
-        return get(FILES_GET_RUNS_PATH, headers, queryParams);
+
+        return http_session.get(FILES_GET_RUNS_PATH, headers, queryParams);
     }
 
     public Response getGetAnalyses() {
