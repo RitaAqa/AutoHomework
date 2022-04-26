@@ -13,6 +13,11 @@ import static utils.PropertiesLoader.*;
 
 public class BaseRequests {
 
+    public BaseRequests(String token) {
+        private String token = token;
+    }
+    
+    
     // """Method to concat base url and api path"""
     private String formUrl(String url) {
         return BASE_URL + url;
