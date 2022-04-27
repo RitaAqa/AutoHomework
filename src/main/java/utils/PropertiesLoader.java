@@ -15,7 +15,20 @@ public class PropertiesLoader {
 
     private static Properties prop = setPropertiesPath();
     public static final String BASE_URL = prop.getProperty("host");
+
+    /*Constants for login*/
     public static final String AUTH_BASIC = prop.getProperty("authBasic");
+
+    public static final String EXPIRATION_TIME_FOR_TOKEN = prop.getProperty("expiry");
+    public static final String LOGIN_FROM = prop.getProperty("loginFrom");
+
+    /*Constants for default values */
+    public static final String DEFAULT_LIMIT = prop.getProperty("defaultLimit");
+    public static final String DEFAULT_FOLDER_ID = prop.getProperty("defaultFolderID");
+    public static final String DEFAULT_FILE_ID = prop.getProperty("defaultFileID");
+    public static final String DEFAULT_RUN_ID = prop.getProperty("defaultRunID");
+    public static final String DEFAULT_FILTER = prop.getProperty("defaultFilter");
+
 
     private static Properties setPropertiesPath() {
         final String path = "common.properties";

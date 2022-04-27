@@ -13,9 +13,9 @@ public class ExampleTests {
 
     @BeforeClass
     public void setUp() {
-
+        logger.info("Test setup");
         apiClient = new ApiClient();
-        apiClient.login();
+        apiClient.setToken();
     }
 
     @Test
@@ -27,42 +27,40 @@ public class ExampleTests {
     @Test
     public void testGetFilesFromRootFolder() {
         logger.info("Test GetFilesFromRootFolder");
-        assertNotNull(apiClient.getFilesFromRootFolder().jsonPath().getString("items"));
-        assertEquals(apiClient.getFilesFromRootFolder().jsonPath().get("total").toString(), "580");
-
+        assertEquals(apiClient.getFilesFromRootFolder(null).statusCode(), 200, "status code is 200");
+        assertEquals(apiClient.getFilesFromRootFolder(null).jsonPath().get("total").toString(), "20", "Default numbers of record is selected");
+        assertEquals(apiClient.getFilesFromRootFolder("10", "1", "0").jsonPath().get("total").toString(), "10", "Custom (10) numbers of record is selected");
     }
 
     @Test
     public void testGetFilesFromSpecificFolder() {
         logger.info("Test GetFilesFromSpecificFolder");
-        assertNotNull(apiClient.getFilesFromSpecificFolder("84c966d5-8dce-429d-8f92-44d5e28b1581"));
-        assertEquals(apiClient.getFilesFromSpecificFolder("84c966d5-8dce-429d-8f92-44d5e28b1581").jsonPath().get("total").toString(), "59");
-
+        assertEquals(apiClient.getFilesFromSpecificFolder(null, null).jsonPath().get("breadcrumbs[0].id").toString(), "84c966d5-8dce-429d-8f92-44d5e28b1581","Default folder is selected");
     }
 
     @Test
     public void testGetFilesCount() {
         logger.info("Test GetFilesCount");
         assertNotNull(apiClient.getFilesCount("84c966d5-8dce-429d-8f92-44d5e28b1581"));
-        assertNotNull(apiClient.getFilesCount("84c966d5-8dce-429d-8f92-44d5e28b1581").jsonPath().getString("total"));
+        assertNotNull(apiClient.getFilesCount(null).jsonPath().getString("total"));
     }
 
     @Test
     public void testGetGetRuns() {
         logger.info("Test GetGetRuns");
-        assertNotNull(apiClient.getRuns());
+        assertNotNull(apiClient.getRuns(null));
     }
 
     @Test
     public void testGetAnalyses() {
         logger.info("Test GetAnalyses");
-        assertNotNull(apiClient.getGetAnalyses());
+        assertNotNull(apiClient.getAnalyses(null, "total"));
     }
 
     @Test
     public void testGetArtifacts() {
         logger.info("Test GetArtifacts");
-        assertNotNull(apiClient.getGetArtifacts());
+        assertNotNull(apiClient.getArtifacts(null));
     }
 
 }
