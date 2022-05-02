@@ -10,7 +10,9 @@ import java.util.Properties;
 
 import io.restassured.config.Config;
 
-
+/**
+ * class for loading variables from properties file
+ */
 public class PropertiesLoader {
 
     private static Properties prop = setPropertiesPath();
@@ -24,10 +26,6 @@ public class PropertiesLoader {
 
     /*Constants for default values */
     public static final String DEFAULT_LIMIT = prop.getProperty("defaultLimit");
-    public static final String DEFAULT_FOLDER_ID = prop.getProperty("defaultFolderID");
-    public static final String DEFAULT_FILE_ID = prop.getProperty("defaultFileID");
-    public static final String DEFAULT_RUN_ID = prop.getProperty("defaultRunID");
-    public static final String DEFAULT_FILTER = prop.getProperty("defaultFilter");
 
 
     private static Properties setPropertiesPath() {
