@@ -7,14 +7,26 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Objects;
 import java.util.Properties;
+
 import io.restassured.config.Config;
 
-
+/**
+ * class for loading variables from properties file
+ */
 public class PropertiesLoader {
 
     private static Properties prop = setPropertiesPath();
-    public static final String HOST = prop.getProperty("host");
-    public static final String AUTHBASIC = prop.getProperty("authBasic");
+    public static final String BASE_URL = prop.getProperty("host");
+
+    /*Constants for login*/
+    public static final String AUTH_BASIC = prop.getProperty("authBasic");
+
+    public static final String EXPIRATION_TIME_FOR_TOKEN = prop.getProperty("expiry");
+    public static final String LOGIN_FROM = prop.getProperty("loginFrom");
+
+    /*Constants for default values */
+    public static final String DEFAULT_LIMIT = prop.getProperty("defaultLimit");
+
 
     private static Properties setPropertiesPath() {
         final String path = "common.properties";
