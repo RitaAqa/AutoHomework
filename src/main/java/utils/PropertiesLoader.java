@@ -26,6 +26,8 @@ public class PropertiesLoader {
 
     /*Constants for default values */
     public static final String DEFAULT_LIMIT = prop.getProperty("defaultLimit");
+    public static final Long TIMEOUT = Long.parseLong(prop.getProperty("timeOutForWait"));
+    public static final String BROWSER = prop.getProperty("browser");
 
 
     private static Properties setPropertiesPath() {
