@@ -12,7 +12,7 @@ public class LoginPage extends BasePage {
     private final By passwordInput = By.id("password");
     private final By loginBtn = By.id("signInButton");
     private final By loginErrorLabel = By.id("message-id");
-    private  final By signUpBtn = By.partialLinkText("Sign Up");
+    private final By signUpBtn = By.partialLinkText("Sign Up");
 
     public void clickDoNotShowAgainBtn() {
         click(doNotShowAgainBtn);

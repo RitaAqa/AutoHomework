@@ -10,14 +10,15 @@ public class LoginPageTest extends BaseTestUI {
     {
         app.closePopupOnStart();
         app.login("email@test.com" , "passwordtest");
-        assertTrue(app.getLoginPage().isLoginFailed(), "Error Login message is not displayed");
+        assertTrue(app.loginPage.isLoginFailed(), "Error Login message is not displayed");
     }
+
 
     @Test(description = "Verify that SignUp page is opened")
     public void testSignUpPageIsOpened()
     {
         app.closePopupOnStart();
-        app.getLoginPage().navigateToSignUpPage();
-        assertTrue(app.getSignUpPage().isSignUpPageDisplayed(), "Sign Up page is not displayed");
+        app.loginPage.navigateToSignUpPage();
+        assertTrue(app.signUpPage.isSignUpPageDisplayed(), "Sign Up page is not displayed");
     }
 }

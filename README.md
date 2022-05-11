@@ -23,7 +23,7 @@ UI part
 3. Common methods for pages should be in main/java/app/ui/page_object/BasePage class
 4. Classes for settings should be in main/java/app/ui/utils folder
 5. EndPoint should be in main/java/app/ui/Urls class
-6. Methods which is used in different tests should be in main/java/app/ui/CosmosIDUI class
+6. Common methods for tests should be in main/java/app/ui/CosmosIDUI class
 7. Initiation of page objects should be in main/java/app/ui/CosmosIDUI class
 
 

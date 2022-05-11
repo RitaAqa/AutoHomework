@@ -6,11 +6,11 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 /**
  * Class contains different web drivers with their settings
  */
-public class Browsers {
+public class Drivers {
     /**
      * @return ChromeDriver
      */
-    static ChromeDriver getChromeDriver() {
+    public static ChromeDriver getChromeDriver() {
         System.setProperty("webdriver.chrome.driver", "src/main/resources/webdrivers/chromedriver");
         //add capabilities if it's needed
         return new ChromeDriver();
@@ -19,7 +19,7 @@ public class Browsers {
     /**
      * @return FirefoxDriver
      */
-    static FirefoxDriver getFirefoxDriver() {
+    public static FirefoxDriver getFirefoxDriver() {
         System.setProperty("webdriver.gecko.driver", "src/main/resources/webdrivers/geckodriver");
         //add capabilities if it's needed
         return new FirefoxDriver();

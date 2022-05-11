@@ -29,23 +29,24 @@ public class BasePage {
         getElement(elem).click();
     }
 
+    public boolean isElementDisplayed(By elem) {
+        return getElement(elem).isDisplayed();
+    }
+
     public WebElement getElement(By elem) {
         waitForElementIsPresent(elem);
         return driver.findElement(elem);
     }
 
-    public boolean isElementDisplayed(By elem) {
-        waitForElementIsPresent(elem);
-        return getElement(elem).isDisplayed();
-    }
-
     public void waitForElementIsPresent(By elem) {
         try {
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(TIMEOUT));
-            wait.until(ExpectedConditions.presenceOfElementLocated(elem));
+            WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(elem));
         }
         catch (TimeoutException e) {
-            logger.error("Cannot find element :" + elem);
+            //logger.error("Cannot find element :" + elem);
+            throw new AssertionError("Cannot find element :" + elem);
         }
+
     }
 }
