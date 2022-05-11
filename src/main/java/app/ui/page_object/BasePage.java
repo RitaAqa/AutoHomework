@@ -41,10 +41,9 @@ public class BasePage {
     public void waitForElementIsPresent(By elem) {
         try {
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(TIMEOUT));
-            WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(elem));
+            wait.until(ExpectedConditions.presenceOfElementLocated(elem));
         }
         catch (TimeoutException e) {
-            //logger.error("Cannot find element :" + elem);
             throw new AssertionError("Cannot find element :" + elem);
         }
 
