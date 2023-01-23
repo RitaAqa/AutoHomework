@@ -40,6 +40,7 @@ public class ApiClient extends BaseRequests {
         //execute request
         Response response = post(Urls.LOGIN_URL, headers, body);
         String token = response.jsonPath().getString("token");
+
         if (token == null) {
             throw new Exception("Token is empty");
         }

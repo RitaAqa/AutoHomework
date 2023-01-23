@@ -7,12 +7,12 @@ public class LoginPage extends BasePage {
         super(driver);
     }
 
-    private final By doNotShowAgainBtn = By.cssSelector(".css-taqdkb");
-    private final By userNameInput = By.id("email");
-    private final By passwordInput = By.id("password");
-    private final By loginBtn = By.id("signInButton");
-    private final By loginErrorLabel = By.id("message-id");
-    private final By signUpBtn = By.partialLinkText("Sign Up");
+    private final By doNotShowAgainBtn = By.cssSelector(".css-owseqk");
+    private final By userNameInput = By.id("sign-in-form--email");
+    private final By passwordInput = By.id("sign-in-form--password");
+    private final By loginBtn = By.id("sign-in-form--submit");
+    private final By loginErrorLabel = By.className("MuiAlert-message");
+    private final By signUpBtn = By.partialLinkText("Create an account");
 
     public void clickDoNotShowAgainBtn() {
         click(doNotShowAgainBtn);

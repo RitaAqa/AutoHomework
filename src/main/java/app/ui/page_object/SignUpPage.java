@@ -9,7 +9,7 @@ public class SignUpPage extends BasePage{
         super(driver);
     }
 
-    private final By confirmPassword = By.id("confirm_password");
+    private final By confirmPassword = By.id("sign-up-form--confirm-password");
 
 
     public boolean isSignUpPageDisplayed() {

@@ -11,16 +11,18 @@ public class Drivers {
      * @return ChromeDriver
      */
     public static ChromeDriver getChromeDriver() {
-        System.setProperty("webdriver.chrome.driver", "src/main/resources/webdrivers/chromedriver");
+        System.setProperty("webdriver.chrome.driver", "src/main/resources/webdrivers/chromedriver.exe");
+        System.out.println("webdriver.chrome.driver");
         //add capabilities if it's needed
         return new ChromeDriver();
+
     }
 
     /**
      * @return FirefoxDriver
      */
     public static FirefoxDriver getFirefoxDriver() {
-        System.setProperty("webdriver.gecko.driver", "src/main/resources/webdrivers/geckodriver");
+        System.setProperty("webdriver.gecko.driver", "src/main/resources/webdrivers/geckodriver.exe");
         //add capabilities if it's needed
         return new FirefoxDriver();
     }
