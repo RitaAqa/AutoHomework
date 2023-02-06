@@ -1,4 +1,4 @@
-package app.api;
+package framework.api;
 
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.response.Response;

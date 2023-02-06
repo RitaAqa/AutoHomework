@@ -1,4 +1,4 @@
-package app.api;
+package framework.api;
 
 import io.restassured.response.Response;
 import org.json.JSONObject;

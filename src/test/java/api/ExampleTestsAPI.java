@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.testng.SkipException;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import app.api.ApiClient;
+import framework.api.ApiClient;
 
 /**
  * class contains API tests
