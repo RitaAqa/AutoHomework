@@ -28,6 +28,11 @@ public class CosmosIDUI {
         try {
             logger.info("New driver initialization");
             this.driver = getDriver(BROWSER);
+
+            // var BROWSER is added to run config of the testNG.xml as env var (system wind var). Works only if run via testng.xml
+           // this.driver = getDriver(System.getenv("BROWSER"));
+            // property BROWSER is added to run config of the testNG.xml as VM options(java var). Works only if run via testng.xml
+           //this.driver = getDriver(System.getProperty("BROWSER"));
         } catch (Exception e) {
             throw new Exception();
         }

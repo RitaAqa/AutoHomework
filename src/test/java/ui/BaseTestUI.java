@@ -24,6 +24,9 @@ public class BaseTestUI {
             throw new SkipException("Testing is stopped");
         }
     }
+
+
+    //it might be not necessary for each test. Maybe wee are already located on necessary page/ Think about it
     @BeforeMethod(description = "Start application")
     public void goToStartPage() {
         logger.info("Go to start page");

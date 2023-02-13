@@ -3,7 +3,7 @@ package framework.ui.utilsForUIOnly;
 import org.openqa.selenium.WebDriver;
 
 /**
- * Class for setting driver
+ * Class for setting driver   Factorymethod?
  */
 public class DriversProvider {
     private static WebDriver driver;
