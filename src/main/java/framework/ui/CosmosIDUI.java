@@ -3,8 +3,8 @@ package framework.ui;
 import framework.ui.page_object.LoginPage;
 import framework.ui.page_object.SignUpPage;
 import org.openqa.selenium.WebDriver;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.log4j.Logger;
+
 
 
 import static framework.ui.utilsForUIOnly.DriversProvider.getDriver;
@@ -17,7 +17,7 @@ import static utils.PropertiesLoader.BROWSER;
 public class CosmosIDUI {
     //how to top test case execution if element not found testng!!
 
-    static final Logger logger = LoggerFactory.getLogger(CosmosIDUI.class);
+    static final Logger logger = Logger.getLogger(CosmosIDUI.class);
     private WebDriver driver;
 
     private LoginPage loginPage;

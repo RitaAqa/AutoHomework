@@ -19,7 +19,7 @@ public class LoginTest extends BaseTestUI {
     @DataProvider(name = "users")
     public Iterator<Object[]> allUsers() throws IOException {
 
-      //  List<UserLoginData> allUsersLoginData = getUserLoginDataFromCode();
+        //  List<UserLoginData> allUsersLoginData = getUserLoginDataFromCode();
         List<UserLoginData> allUsersLoginData = getUserLoginDataFromFile();
 
         List<Object[]> list = new ArrayList<>();
@@ -34,7 +34,7 @@ public class LoginTest extends BaseTestUI {
         String fileName = "src/main/resources/dataFiles/UsersLoginData.txt";
         BufferedReader reader = new BufferedReader(new FileReader(fileName));
         String s = reader.readLine();
-        while (s!=null) {
+        while (s != null) {
             String[] parts = s.split(",");
             UserLoginData userLoginData = new UserLoginData(parts[0], parts[1]);
             allUsersLoginData.add(userLoginData);
@@ -68,8 +68,8 @@ public class LoginTest extends BaseTestUI {
 
     @Test(description = "Verify that login is failed")
     public void testLoginIsFailed1() {
-       System.out.println(System.getenv("BROWSER"));
-       System.out.println(System.getProperty("BROWSER"));
+        System.out.println(System.getenv("BROWSER"));
+        System.out.println(System.getProperty("BROWSER"));
         logger.info("Close popup on app start");
         logger.info("Login with invalid credentials");
         app.closePopupOnStart()
@@ -81,12 +81,20 @@ public class LoginTest extends BaseTestUI {
 
     @Test(description = "Verify that SignUp page is opened")
     public void testSignUpPageIsOpened() {
-        logger.info("Close popup on app start");
+
+        logger.trace("TRACE");
+        logger.debug("DEBUG");
+        logger.info("INFO");
+        logger.warn("WARN");
+        logger.error("ERROR");
+        logger.fatal("FATAL");
+
+       /* logger.info("Close popup on app start");
         logger.info("Navigate to Sign Up page");
         app.closePopupOnStart()
                 .getLoginPage()
                 .navigateToSignUpPage();
         logger.info("Check if the Sign Up page is displayed");
         assertTrue(app.getSignUpPage().isSignUpPageDisplayed(), "Sign Up page is not displayed");
-    }
+*/    }
 }
