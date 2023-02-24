@@ -5,6 +5,7 @@
       <!--  <parameter name = "browser" value = "firefox"/>-->
         <classes>
             <class name="ui.LoginTest"></class>
+            <class name="ui.LoginTestWithDataProvider"></class>
         </classes>
     </test>
 </suite>

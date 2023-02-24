@@ -7,7 +7,7 @@ import org.apache.log4j.Logger;
 
 
 
-import static framework.ui.utilsForUIOnly.DriversProvider.getDriver;
+import static framework.ui.utilsForUIOnly.DriversProvider.getNewDriver;
 import static utils.Helpers.prepareUrl;
 import static utils.PropertiesLoader.BROWSER;
 
@@ -18,7 +18,12 @@ public class CosmosIDUI {
     //how to top test case execution if element not found testng!!
 
     static final Logger logger = Logger.getLogger(CosmosIDUI.class);
-    private WebDriver driver;
+
+    public static WebDriver getDriver() {
+        return driver;
+    }
+
+    private static WebDriver driver;
 
     private LoginPage loginPage;
 
@@ -27,7 +32,7 @@ public class CosmosIDUI {
     public CosmosIDUI() throws Exception {
         try {
             logger.info("New driver initialization");
-            this.driver = getDriver(BROWSER);
+            this.driver = getNewDriver(BROWSER);
 
             // var BROWSER is added to run config of the testNG.xml as env var (system wind var). Works only if run via testng.xml
            // this.driver = getDriver(System.getenv("BROWSER"));

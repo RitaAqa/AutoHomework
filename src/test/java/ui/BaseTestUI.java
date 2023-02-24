@@ -1,25 +1,25 @@
 package ui;
 
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import framework.ui.CosmosIDUI;
-import framework.ui.page_object.BasePage;
 import org.apache.log4j.Logger;
 //import org.slf4j.Logger;
 //import org.slf4j.LoggerFactory;
 import org.testng.SkipException;
 import org.testng.annotations.*;
+import utils.extentReport.ExtentManager;
 
 /**
  * Class contains instruction that should be executed before each test method
  */
 public class BaseTestUI {
-    //slf4j
-    //static final Logger logger = LoggerFactory.getLogger(BasePage.class);
     static final Logger logger = Logger.getLogger(BaseTestUI.class);
-
-
     protected static CosmosIDUI app;
 
-    //@BeforeTest(description = "Driver setup")
+
+    @BeforeTest(description = "Driver setup")
     public void startApp() {
         logger.info("Start application");
         try {
@@ -30,19 +30,18 @@ public class BaseTestUI {
         }
     }
 
-
     //it might be not necessary for each test. Maybe wee are already located on necessary page/ Think about it
-    //@BeforeMethod(description = "Start application")
+    @BeforeMethod(description = "Start application")
     public void goToStartPage() {
         logger.info("Go to start page");
         app.navigateToStartPage();
     }
 
-    //@AfterClass
+
+    @AfterTest
     public void tearDown() {
         logger.info("Browser closed");
         app.closeApp();
     }
-
 
 }
