@@ -1,9 +1,7 @@
-package ui;
+package framework.ui;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
-import com.aventstack.extentreports.reporter.ExtentSparkReporter;
-import framework.ui.CosmosIDUI;
 import org.apache.log4j.Logger;
 //import org.slf4j.Logger;
 //import org.slf4j.LoggerFactory;
@@ -18,6 +16,13 @@ public class BaseTestUI {
     static final Logger logger = Logger.getLogger(BaseTestUI.class);
     protected static CosmosIDUI app;
 
+    private static ExtentReports extent;
+    private static ExtentTest test;
+
+    public static ExtentTest getTest() {
+        return test;
+    }
+
 
     @BeforeTest(description = "Driver setup")
     public void startApp() {
@@ -28,6 +33,13 @@ public class BaseTestUI {
             logger.error("Cannot get driver. Test cases are skipped");
             throw new SkipException("Testing is stopped");
         }
+        //create extent report
+        extent = ExtentManager.getInstance();
+    }
+
+    @BeforeClass
+    public void createTestForReport() {
+        test = extent.createTest(getClass().getName());
     }
 
     //it might be not necessary for each test. Maybe wee are already located on necessary page/ Think about it
@@ -42,6 +54,7 @@ public class BaseTestUI {
     public void tearDown() {
         logger.info("Browser closed");
         app.closeApp();
+        extent.flush();
     }
 
 }

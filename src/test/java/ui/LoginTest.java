@@ -1,5 +1,6 @@
 package ui;
 
+import framework.ui.BaseTestUI;
 import org.testng.SkipException;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;

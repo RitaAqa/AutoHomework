@@ -1,5 +1,6 @@
 package ui;
 
+import framework.ui.BaseTestUI;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import framework.ui.utilsForUIOnly.listeners.MyITestListener;
