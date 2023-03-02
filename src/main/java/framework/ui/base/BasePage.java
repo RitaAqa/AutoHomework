@@ -1,4 +1,4 @@
-package framework.ui.page_object;
+package framework.ui.base;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;

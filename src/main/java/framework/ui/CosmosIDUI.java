@@ -1,13 +1,12 @@
 package framework.ui;
 
-import framework.ui.page_object.LoginPage;
-import framework.ui.page_object.SignUpPage;
+import framework.ui.pageobject.LoginPage;
+import framework.ui.pageobject.SignUpPage;
 import org.openqa.selenium.WebDriver;
 import org.apache.log4j.Logger;
 
 
-
-import static framework.ui.utilsForUIOnly.DriversProvider.getNewDriver;
+import static utils.DriversProvider.getNewDriver;
 import static utils.Helpers.prepareUrl;
 import static utils.PropertiesLoader.BROWSER;
 
@@ -15,7 +14,6 @@ import static utils.PropertiesLoader.BROWSER;
  * class initiates application pages and contains common methods for application
  */
 public class CosmosIDUI {
-    //how to top test case execution if element not found testng!!
 
     static final Logger logger = Logger.getLogger(CosmosIDUI.class);
 
@@ -33,16 +31,12 @@ public class CosmosIDUI {
         try {
             logger.info("New driver initialization");
             this.driver = getNewDriver(BROWSER);
-
-            // var BROWSER is added to run config of the testNG.xml as env var (system wind var). Works only if run via testng.xml
-           // this.driver = getDriver(System.getenv("BROWSER"));
-            // property BROWSER is added to run config of the testNG.xml as VM options(java var). Works only if run via testng.xml
-           //this.driver = getDriver(System.getProperty("BROWSER"));
+            // if property BROWSER is added to run config as VM options(java var) of executed file or passes through cmd -DBROWSER=chrome (e.g.)
+            // this.driver = getNewDriver(System.getProperty("BROWSER"));
         } catch (Exception e) {
             throw new Exception();
         }
     }
-
 
     /**
      * Method opens browser on start page (login page)
@@ -60,19 +54,9 @@ public class CosmosIDUI {
         driver.quit();
     }
 
-    //implemented fluent interface
-    public CosmosIDUI closePopupOnStart() {
-        getLoginPage().clickDoNotShowAgainBtn();
-        return this;
-    }
 
+    //----------------------------------- pages initiation--------------------------------------------------------------
 
-    public void login(String username, String password) {
-        getLoginPage().login(username, password);
-    }
-
-
-// init object when it's needed first time
     public LoginPage getLoginPage() {
         if (loginPage == null) {
             loginPage = new LoginPage(driver);
@@ -86,6 +70,21 @@ public class CosmosIDUI {
         }
         return signUpPage;
     }
+
+
+    //---------------------------------------------------------common methods-------------------------------------------
+
+
+    // implemented fluent interface
+    public CosmosIDUI closePopupOnStart() {
+        getLoginPage().clickDoNotShowAgainBtn();
+        return this;
+    }
+
+    public void login(String username, String password) {
+        getLoginPage().login(username, password);
+    }
+
 
 }
 

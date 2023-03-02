@@ -1,19 +1,19 @@
-package ui;
+package framework.datamodels;
 
-import framework.ui.BaseTestUI;
-import org.testng.annotations.Listeners;
-import org.testng.annotations.Test;
-import framework.ui.utilsForUIOnly.listeners.MyITestListener;
+import org.testng.annotations.DataProvider;
 
-import static org.testng.Assert.*;
-@Listeners(MyITestListener.class)
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
+public class UserLoginDataProvider {
 
-public class LoginTestWithDataProvider extends BaseTestUI {
-/*
-
+    // 1 option - return Iterator<Object[]>
     @DataProvider(name = "users")
-    public Iterator<Object[]> allUsers() throws IOException {
+    public static Iterator<Object[]> allUsers() throws IOException {
 
         //  List<UserLoginData> allUsersLoginData = getUserLoginDataFromCode();
         List<UserLoginData> allUsersLoginData = getUserLoginDataFromFile();
@@ -24,6 +24,18 @@ public class LoginTestWithDataProvider extends BaseTestUI {
         }
         return list.iterator();
     }
+
+/*
+    // 2nd option -  return Object[][]
+    @DataProvider(name = "users")
+    public static Object[][] allUsers() throws IOException {
+        List<UserLoginData> allUsersLoginData = getUserLoginDataFromFile();
+
+        return new Object[][] {new Object[] {allUsersLoginData.get(0)},
+                new Object[] {allUsersLoginData.get(1)}
+        };
+    }
+*/
 
     private static List<UserLoginData> getUserLoginDataFromFile() throws IOException {
         List<UserLoginData> allUsersLoginData = new ArrayList<>();
@@ -47,31 +59,5 @@ public class LoginTestWithDataProvider extends BaseTestUI {
         allUsersLoginData.add(userLoginData1);
         allUsersLoginData.add(userLoginData2);
         return allUsersLoginData;
-    }
-
-
-    //test with data provider from code and file
-    @Test(description = "Verify that login is failed", dataProvider = "users")
-    public void testLoginIsFailed2(UserLoginData userLoginData) {
-        logger.info("Close popup on app start");
-        logger.info("Login with invalid credentials");
-        app.closePopupOnStart()
-                .login(userLoginData.login, userLoginData.password);
-        logger.info("Check if an error message is displayed");
-        assertTrue(app.getLoginPage().isLoginFailed(), "Error Login message is not displayed");
-    }
-
-
-   }*/
-
-
-    @Test
-    public void checkTCPassAnother() {
-        assertNull(null);
-    }
-
-    @Test
-    public void checkTCAnother() {
-        assertNull("dsd");
     }
 }

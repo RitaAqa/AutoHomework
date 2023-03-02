@@ -2,7 +2,5 @@
 shelf/
 .idea/
 target/
-log4j.xml
-logfile.log
-htmlLayout.html
+log4j-DON'T USE.xml
 

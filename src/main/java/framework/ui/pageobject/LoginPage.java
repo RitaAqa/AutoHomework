@@ -1,5 +1,6 @@
-package framework.ui.page_object;
+package framework.ui.pageobject;
 
+import framework.ui.base.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 public class LoginPage extends BasePage {

@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="All Test Suite">
+
+    <listeners>
+        <listener class-name="utils.listeners.AnnotationTransformer"/>
+    </listeners>
     <test verbose="2" preserve-order="true" name="/home/lymos/IdeaProjects/AutoHomework - Login tests">
-      <!--  <parameter name = "browser" value = "firefox"/>-->
+        <!--  <parameter name = "browser" value = "firefox"/>-->
         <classes>
             <class name="ui.LoginTest"></class>
-            <class name="ui.LoginTestWithDataProvider"></class>
+            <class name="ui.LoginWithDataProviderTest"></class>
         </classes>
     </test>
 </suite>

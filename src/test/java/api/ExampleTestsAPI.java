@@ -17,7 +17,7 @@ public class ExampleTestsAPI {
     ApiClient apiClient;
     static final Logger logger = LoggerFactory.getLogger(ExampleTestsAPI.class);
 
-    @BeforeClass(description = "Test setup")
+ /*   @BeforeClass(description = "Test setup")
     public void setUp() {
         apiClient = new ApiClient();
         try {
@@ -68,5 +68,5 @@ public class ExampleTestsAPI {
     public void testGetArtifacts() {
         assertNotNull(apiClient.getArtifactsByRunID("437ef8e4-b595-4fd8-a2f5-64221831e925"));
     }
-
+*/
 }

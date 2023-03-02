@@ -1,4 +1,4 @@
-package framework.dataModels;
+package framework.datamodels;
 
 public class UserLoginData {
     public String login;

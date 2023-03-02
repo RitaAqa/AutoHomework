@@ -1,7 +1,8 @@
-package framework.ui;
+package framework.ui.base;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
+import framework.ui.CosmosIDUI;
 import org.apache.log4j.Logger;
 //import org.slf4j.Logger;
 //import org.slf4j.LoggerFactory;
@@ -10,10 +11,10 @@ import org.testng.annotations.*;
 import utils.extentReport.ExtentManager;
 
 /**
- * Class contains instruction that should be executed before each test method
+ * Class contains instruction that should be executed before and after testing
  */
 public class BaseTestUI {
-    static final Logger logger = Logger.getLogger(BaseTestUI.class);
+    public static final Logger logger = Logger.getLogger(BaseTestUI.class);
     protected static CosmosIDUI app;
 
     private static ExtentReports extent;
@@ -49,12 +50,10 @@ public class BaseTestUI {
         app.navigateToStartPage();
     }
 
-
     @AfterTest
     public void tearDown() {
         logger.info("Browser closed");
         app.closeApp();
         extent.flush();
     }
-
 }

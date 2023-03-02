@@ -1,9 +1,8 @@
-package framework.ui.utilsForUIOnly.listeners;
+package utils.listeners;
 
-import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
-import framework.ui.BaseTestUI;
+import framework.ui.base.BaseTestUI;
 import org.apache.log4j.Logger;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
@@ -13,11 +12,14 @@ import org.testng.ITestResult;
 import java.io.File;
 import java.util.Arrays;
 
-import static framework.ui.utilsForUIOnly.SaveScreenshot.captureScreenshot;
+import static utils.Helpers.captureScreenshot;
 
-public class MyITestListener implements ITestListener{
+/**
+ * Class listeners with processing different test-cases events
+ */
+public class TestListener implements ITestListener {
 
-    static final Logger logger = Logger.getLogger(MyITestListener.class);
+    static final Logger logger = Logger.getLogger(TestListener.class);
     private static ExtentTest node;
 
 
@@ -26,6 +28,7 @@ public class MyITestListener implements ITestListener{
         logger.info("New TC started " + result.getName());
         node = BaseTestUI.getTest().createNode(result.getName());
     }
+
     @Override
     public void onTestSuccess(ITestResult result) {
         logger.info("Test successfully finished " + result.getName());
@@ -34,9 +37,9 @@ public class MyITestListener implements ITestListener{
 
     @Override
     public void onTestFailure(ITestResult result) {
-          String failedTest = result.getName();
+        String failedTest = result.getName();
         //refactor!!!
-        String filePath = System.getProperty("user.dir") +  File.separator + "target" +  File.separator + "result" +  File.separator;// + currentDate +  File.separator;
+        String filePath = System.getProperty("user.dir") + File.separator + "target" + File.separator + "result" + File.separator;// + currentDate +  File.separator;
         logger.error("Test " + failedTest + "was failed");
         captureScreenshot(failedTest);
 
@@ -48,6 +51,7 @@ public class MyITestListener implements ITestListener{
                 .info(result.getMethod().getDescription())
                 .info(Arrays.toString(result.getMethod().getGroups()));
     }
+
     @Override
     public void onTestSkipped(ITestResult result) {
         logger.warn("Test was skipped " + result.getName());
@@ -56,12 +60,12 @@ public class MyITestListener implements ITestListener{
 
     @Override
     public void onStart(ITestContext context) {
-        logger.info("This is OnStart method "  + context.getOutputDirectory());
+        logger.info("This is OnStart method " + context.getOutputDirectory());
     }
 
     @Override
     public void onFinish(ITestContext context) {
         logger.info("this is OnFinish method. Number of passed TCs: " + context.getPassedTests().getAllResults().size());
         logger.info("this is OnFinish method. Number of failed TCs: " + context.getFailedTests().getAllResults().size());
-     }
+    }
 }

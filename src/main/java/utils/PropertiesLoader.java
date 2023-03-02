@@ -17,21 +17,22 @@ public class PropertiesLoader {
 
     private static Properties prop = setPropertiesPath();
     public static final String BASE_URL = prop.getProperty("host");
+    public static final String BROWSER = prop.getProperty("browser");
 
     /*Constants for login*/
     public static final String AUTH_BASIC = prop.getProperty("authBasic");
-
     public static final String EXPIRATION_TIME_FOR_TOKEN = prop.getProperty("expiry");
     public static final String LOGIN_FROM = prop.getProperty("loginFrom");
 
     /*Constants for default values */
     public static final String DEFAULT_LIMIT = prop.getProperty("defaultLimit");
     public static final Long TIMEOUT = Long.parseLong(prop.getProperty("timeOutForWait"));
-    public static final String BROWSER = prop.getProperty("browser");
 
-
+    /**
+     * @return properties object
+     */
     private static Properties setPropertiesPath() {
-        final String path = "common.properties";
+        final String path = "appproperties/common.properties";
         Properties prop = new Properties();
         File propFile;
         URL url = Config.class.getClassLoader().getResource(path);

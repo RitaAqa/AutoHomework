@@ -1,15 +1,15 @@
-package framework.ui.utilsForUIOnly;
+package utils;
 
 import org.openqa.selenium.WebDriver;
 
 /**
- * Class for setting driver   Factorymethod?
+ * Class for setting driver
  */
 public class DriversProvider {
     private static WebDriver driver;
 
     /**
-     * Method returns driver for specified browser
+     * Method returns driver for specified browser - Factory method
      *
      * @param browser - specifies browser for test
      * @throws Exception - if browser is not found

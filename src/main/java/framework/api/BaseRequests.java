@@ -67,9 +67,9 @@ public class BaseRequests {
         HashMap<String, String> headers = new HashMap<>();
         headers.put("x-token", this.token);
         return given(setRequestSpec())
-                .headers(headers)
-                .params(params)
+                    .headers(headers)
+                    .params(params)
                 .when()
-                .get(path);
+                    .get(path);
     }
 }
