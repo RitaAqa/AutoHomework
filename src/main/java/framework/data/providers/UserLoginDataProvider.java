@@ -1,5 +1,6 @@
-package framework.datamodels;
+package framework.data.providers;
 
+import framework.data.models.UserLoginData;
 import org.testng.annotations.DataProvider;
 
 import java.io.BufferedReader;

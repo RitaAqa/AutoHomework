@@ -1,4 +1,4 @@
-package framework.ui.pageobject;
+package framework.ui.pages;
 
 import framework.ui.base.BasePage;
 import org.openqa.selenium.By;

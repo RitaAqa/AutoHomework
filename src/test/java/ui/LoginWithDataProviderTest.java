@@ -1,7 +1,7 @@
 package ui;
 
-import framework.datamodels.UserLoginData;
-import framework.datamodels.UserLoginDataProvider;
+import framework.data.models.UserLoginData;
+import framework.data.providers.UserLoginDataProvider;
 import framework.ui.base.BaseTestUI;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;

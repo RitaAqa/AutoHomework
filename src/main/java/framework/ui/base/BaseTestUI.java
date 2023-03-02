@@ -8,7 +8,7 @@ import org.apache.log4j.Logger;
 //import org.slf4j.LoggerFactory;
 import org.testng.SkipException;
 import org.testng.annotations.*;
-import utils.extentReport.ExtentManager;
+import utils.report.ExtentManager;
 
 /**
  * Class contains instruction that should be executed before and after testing

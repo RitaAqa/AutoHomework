@@ -1,7 +1,7 @@
 package framework.ui;
 
-import framework.ui.pageobject.LoginPage;
-import framework.ui.pageobject.SignUpPage;
+import framework.ui.pages.LoginPage;
+import framework.ui.pages.SignUpPage;
 import org.openqa.selenium.WebDriver;
 import org.apache.log4j.Logger;
 
