@@ -28,14 +28,10 @@ public class CosmosIDUI {
     private SignUpPage signUpPage;
 
     public CosmosIDUI() throws Exception {
-        try {
             logger.info("New driver initialization");
             this.driver = getNewDriver(BROWSER);
             // if property BROWSER is added to run config as VM options(java var) of executed file or passes through cmd -DBROWSER=chrome (e.g.)
             // this.driver = getNewDriver(System.getProperty("BROWSER"));
-        } catch (Exception e) {
-            throw new Exception();
-        }
     }
 
     /**
